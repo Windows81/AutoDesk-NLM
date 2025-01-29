@@ -1,0 +1,19 @@
+{
+  "lastUpdated": 1234123412341,
+  "preferences": [
+    {
+      "consentId": "ADSK_PUD_CONTRACTUAL_NECESSITY_DESKTOP",
+      "optIn": false
+    },
+    {
+      "consentId": "ADSK_PUD_OPTIMIZATION_IMPROVEMENT_DESKTOP",
+      "optIn": false
+    },
+    {
+      "consentId": "ADSK_PUD_GO_TO_MARKET_DESKTOP",
+      "optIn": false
+    }
+  ],
+  "userActionRequired": false,
+  "userId": "UnNamed"
+}

@@ -1,0 +1,91 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Autodesk\MC3]
+"OverridedByHKLM"=dword:00000000
+"ADAOptIn"=dword:00000000
+"ADARePrompted"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\FLEXlm License Manager]
+"ADSKFLEX_LICENSE_FILE"="@LOCALHOST"
+
+[HKEY_CURRENT_USER\Software\FLEXlm License Manager\Borrow]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\FLEXlm License Manager]
+"lmtools_LM_A_DISABLE_ENV"=dword:00000001
+"Service"="Flexlm Service"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\FLEXlm License Manager\Flexlm Service]
+"Lmgrd"="C:\\Program Files (x86)\\Common Files\\Autodesk Shared\\Network License Manager\\lmgrd.exe"
+"LMGRD_LOG_FILE"="C:\\ProgramData\\FLEXlm\\lmgrd\\debug.log"
+"License"="C:\\Program Files (x86)\\Common Files\\Autodesk Shared\\Network License Manager\\License.lic"
+"cmdlineparams"=""
+"Service"="Flexlm Service"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\FLEXlm License Manager]
+"lmtools_LM_A_DISABLE_ENV"=dword:00000001
+"Service"="Flexlm Service"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\FLEXlm License Manager\Flexlm Service]
+"Lmgrd"="C:\\Program Files (x86)\\Common Files\\Autodesk Shared\\Network License Manager\\lmgrd.exe"
+"LMGRD_LOG_FILE"="C:\\ProgramData\\FLEXlm\\lmgrd\\debug.log"
+"License"="C:\\Program Files (x86)\\Common Files\\Autodesk Shared\\Network License Manager\\License.lic"
+"cmdlineparams"=""
+"Service"="Flexlm Service"
+
+; Restrict Run
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AcEventSync.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AcQMod.exe]
+"Debugger"="Blocked" 	
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ADPClientService.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdpSDKUtil.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskAccessCore.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskAccessService.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskAccessServiceHost.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskIdentityManager.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Autodesk Access UI Host.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskAccessDialogUtility.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskUpdateCheck.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdskInstallerUpdateCheck.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\LogAnalyzer.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ProcessManager.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DownloadManager.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\install_helper_tool.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\install_manager.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AdSSO.exe]
+"Debugger"="Blocked"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GenuineService.exe]
+"Debugger"="Blocked"
