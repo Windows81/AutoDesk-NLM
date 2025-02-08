@@ -2,6 +2,8 @@
 
 The contents in this repo were downloaded from AppNee with the `exe` files extracted using 7z.
 
+Then the extracted `.bat` scripts were modified to reflect the file structure around them.
+
 The following description was taken from [`notes.txt`](./notes.txt) then processed and clarified through CodeQwen.
 
 ---

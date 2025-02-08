@@ -5,6 +5,7 @@
 :: Starting Parameters
 @echo off & color a & chcp 1254 & mode con: cols=70 lines=15 & title Autodesk License Patcher Uninstaller & cls
 SET liveincolor=1 & SET "c_underline=[4m" & SET "c_reset=[0m" & SET "c_Red_Blak=[91;40m" & SET "c_Gre_Blak=[92;40m" & SET "c_Yel_Blak=[93;40m" & SET "c_Blu_Blak=[94;40m" & SET "c_Mag_Blak=[95;40m" & SET "c_Cya_Blak=[96;40m" & SET "c_Whi_Blak=[97;40m"
+SET PatcherLocation=%~dp0
 
 :: Run As Administrator
 >nul reg add hkcu\software\classes\.Admin\shell\runas\command /f /ve /d "cmd /x /d /r set \"f0=%%2\" &call \"%%2\" %%3" &set _= %*
@@ -40,7 +41,7 @@ echo  %c_Cya_Blak%Stopping ADSK Licensing Service And Reverting Changes%c_Gre_Bl
 ping 127.0.0.1 -n 5 >Nul 2>&1
 echo.
 
-regedit.exe /s "%SystemDrive%\AutodeskLicensePatcherUninstaller\Tweak.reg" >Nul 2>&1
+regedit.exe /s "%PatcherLocation%\Tweak.reg" >Nul 2>&1
 schtasks.exe /Delete /tn "\Microsoft\Windows\Autodesk\Autodesk" /f >Nul 2>&1
 netsh advfirewall firewall delete rule name="AutodeskNLM" >Nul 2>&1
 cd "C:\Program Files (x86)\Common Files\Autodesk Shared\AdskLicensing" >Nul 2>&1
@@ -67,8 +68,6 @@ del /f /q "%SystemDrive%\Autodesk\Network License Manager" >Nul 2>&1
 del /f /q "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" >Nul 2>&1
 @RD /S /Q "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager" >Nul 2>&1
 del /f /q "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager" >Nul 2>&1
-@RD /S /Q "%SystemDrive%\AutodeskLicensePatcherInstaller" >Nul 2>&1
-del /f /q "%SystemDrive%\AutodeskLicensePatcherInstaller" >Nul 2>&1
 net start AdskLicensingService >Nul 2>&1
 cls
 
@@ -86,11 +85,5 @@ echo  %c_Cya_Blak%Support Developers, Buy If You Like/Use It.
 echo.
 ping 127.0.0.1 -n 5 >Nul 2>&1
 
-@RD /S /Q "%SystemDrive%\AutodeskLicensePatcherUninstaller" >Nul 2>&1
-del /f /q "%SystemDrive%\AutodeskLicensePatcherUninstaller" >Nul 2>&1
-
 :: CleanUp And Exit
-cd \
-(goto) 2>nul&rd /s /q "%~dp0"
-del /q /f "%0"
 cls & exit

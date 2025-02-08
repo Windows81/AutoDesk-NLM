@@ -5,6 +5,7 @@
 :: Starting Parameters
 @echo off & color a & chcp 1254 & mode con: cols=70 lines=15 & title Autodesk License Patcher & cls
 SET liveincolor=1 & SET "c_underline=[4m" & SET "c_reset=[0m" & SET "c_Red_Blak=[91;40m" & SET "c_Gre_Blak=[92;40m" & SET "c_Yel_Blak=[93;40m" & SET "c_Blu_Blak=[94;40m" & SET "c_Mag_Blak=[95;40m" & SET "c_Cya_Blak=[96;40m" & SET "c_Whi_Blak=[97;40m"
+SET PatcherLocation=%~dp0
 
 :: Run As Administrator
 >nul reg add hkcu\software\classes\.Admin\shell\runas\command /f /ve /d "cmd /x /d /r set \"f0=%%2\" &call \"%%2\" %%3" &set _= %*
@@ -62,7 +63,7 @@ del /f /q "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager" >N
 >nul Powershell -nop -c "Get-WmiObject -Query ' select * from Win32_Product where Name like \"%%Autodesk Network License Manager%%\" ' | ForEach-Object { ($_).Uninstall()}"
 :: Dism /Online /Add-Capability /CapabilityName:WMIC~~~~ >Nul 2>&1
 :: WMIC Product Where "Name='Autodesk Network License Manager'" Call Uninstall /NoInteractive >Nul 2>&1
-regedit.exe /s "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\Tweak\Tweak.reg" >Nul 2>&1
+regedit.exe /s "%PatcherLocation%\Files\Tweak\Tweak.reg" >Nul 2>&1
 cls
 
 DATE /T
@@ -77,14 +78,14 @@ echo.
 echo  %c_Cya_Blak%Placing And Replacing Necessary Files%c_Gre_Blak%
 ping 127.0.0.1 -n 5 >Nul 2>&1
 
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\NetworkLicenseManager\adskflex.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\NetworkLicenseManager\lmgrd.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\NetworkLicenseManager\License.lic" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\Service\Service.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\PatchedFiles\version.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\AdskLicensing\Current\AdskLicensingAgent\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\PatchedFiles\netapi32.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\AdskLicensing\Current\AdskLicensingAgent\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\PatchedFiles\netapi32.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\Adlm\R28\" /Y /K /R /S /H /i >Nul 2>&1
-xcopy "%SystemDrive%\AutodeskLicensePatcherInstaller\Files\Tweak\UnNamed.json" "%appdata%\Autodesk\ADPSDK\UserConsent\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\NetworkLicenseManager\adskflex.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\NetworkLicenseManager\lmgrd.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\NetworkLicenseManager\License.lic" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\Service\Service.exe" "%CommonProgramFiles(x86)%\Autodesk Shared\Network License Manager\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\PatchedFiles\version.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\AdskLicensing\Current\AdskLicensingAgent\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\PatchedFiles\netapi32.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\AdskLicensing\Current\AdskLicensingAgent\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\PatchedFiles\netapi32.dll" "%CommonProgramFiles(x86)%\Autodesk Shared\Adlm\R28\" /Y /K /R /S /H /i >Nul 2>&1
+xcopy "%PatcherLocation%\Files\Tweak\UnNamed.json" "%appdata%\Autodesk\ADPSDK\UserConsent\" /Y /K /R /S /H /i >Nul 2>&1
 cls
 
 DATE /T
@@ -132,7 +133,7 @@ ping 127.0.0.1 -n 5 >Nul 2>&1
 
 sc config "AdskLicensingService" Start= Auto >Nul 2>&1
 schtasks.exe /Delete /tn "\Microsoft\Windows\Autodesk\Autodesk" /f >Nul 2>&1
-schtasks.exe /Create /XML %SystemDrive%\AutodeskLicensePatcherInstaller\Files\Task\Autodesk.xml /tn "\Microsoft\Windows\Autodesk\Autodesk" >Nul 2>&1
+schtasks.exe /Create /XML %PatcherLocation%\Files\Task\Autodesk.xml /tn "\Microsoft\Windows\Autodesk\Autodesk" >Nul 2>&1
 cls
 
 DATE /T
@@ -205,11 +206,5 @@ echo  %c_Cya_Blak%Support Developers, Buy If You Like/Use It.
 echo.
 ping 127.0.0.1 -n 5 >Nul 2>&1
 
-@RD /S /Q "%SystemDrive%\AutodeskLicensePatcherUninstaller" >Nul 2>&1
-del /f /q "%SystemDrive%\AutodeskLicensePatcherUninstaller" >Nul 2>&1
-
 :: CleanUp And Exit
-cd \
-(goto) 2>nul&rd /s /q "%~dp0"
-del /q /f "%0"
 cls & exit
