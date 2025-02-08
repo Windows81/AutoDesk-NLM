@@ -194,7 +194,4 @@ echo.
 echo  Completed & ping 127.0.0.1 -n 5 >Nul 2>&1 & exit
 
 :: CleanUp And Exit
-cd \
-(goto) 2>nul&rd /s /q "%~dp0"
-del /q /f "%0"
 cls & exit
